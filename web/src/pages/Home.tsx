@@ -47,7 +47,7 @@ export default function Home() {
         <label className="field-label" htmlFor="goal">Support goal</label>
         <div className="amount-input"><input id="goal" inputMode="decimal" value={goal} onChange={e => setGoal(e.target.value)} /><span>USDC</span></div>
         <button className="button button-dark submit-button" type="submit" disabled={isPending || isLoading}>{isPending || isLoading ? 'Waiting for confirmation…' : 'Create your jar'} <span>↗</span></button>
-        {(error || writeError) && <p className="error-text">{error || writeError?.shortMessage || 'Transaction failed. Please try again.'}</p>}
+        {(error || writeError) && <p className="error-text">{error || 'Transaction failed. Please try again.'}</p>}
       </form>
     </section>
     <footer className="site-footer"><span>Small tips, big support.</span><span>Powered by Arc</span></footer>

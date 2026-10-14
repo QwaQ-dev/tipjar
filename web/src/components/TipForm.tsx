@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { formatUnits, parseUnits } from 'viem'
+import { parseUnits } from 'viem'
 import { useAccount, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
 import { arc } from '../lib/chain'
 import { erc20Abi, tipJarAbi } from '../lib/abi'
@@ -68,7 +68,7 @@ export default function TipForm({ username, onSent }: { username: string; onSent
       {isPending || confirming ? 'Waiting for confirmation…' : stage === 'approve' ? 'Approve USDC' : stage === 'tip' ? 'Send tip' : enoughAllowance ? 'Send tip' : 'Approve USDC'}
     </button>
     {hash && <a className="tx-link" href={`https://explorer.arc.io/tx/${hash}`} target="_blank" rel="noreferrer">View transaction</a>}
-    {(error || writeError) && <p className="error-text">{error || writeError?.shortMessage || 'Transaction failed. Please try again.'}</p>}
+    {(error || writeError) && <p className="error-text">{error || 'Transaction failed. Please try again.'}</p>}
     {isSuccess && stage === 'idle' && <p className="success-text">Transaction confirmed.</p>}
   </form>
 }
